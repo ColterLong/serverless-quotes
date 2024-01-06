@@ -7,12 +7,25 @@ defineProps({
 </script>
 
 <template>
-  <h1 class="read-the-docs">{{ name }}</h1>
-  <p>{{ text }}</p>
+  <main class="quote">
+    <h1 class="title">{{ name }}</h1>
+    <p class="text">{{ text }}</p>
+  </main>
 </template>
 
 <style scoped>
-.read-the-docs {
-  color: #888;
+.quote {
+  background-color: #385170;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  margin: 16px;
+
+}
+/* .title {
+  color: #9fd3c7;
+} */
+.title, .text {
+  color: #ececec;
 }
 </style>

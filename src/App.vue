@@ -26,13 +26,17 @@ const quotes = [{
 
 
 <template>
-  <h1 class="title">Top 10 Famous Quotes</h1>
-  <div class="quotes" v-for="quote in quotes">
-    <Quote :name="quote.name" :text="quote.text" />
-  </div>
+    <h1 class="title">Top 10 Famous Quotes</h1>
+    <div class="quotes" v-for="quote in quotes">
+      <Quote :name="quote.name" :text="quote.text" />
+    </div>
 </template>
 
 <style scoped>
+
+.title {
+  color: #ececec;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
