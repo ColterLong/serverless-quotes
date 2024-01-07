@@ -8,9 +8,9 @@ defineProps({
 
 <template>
   <main class="quote">
-    <h1 class="title">{{ name }}</h1>
+    <h1 class="text">{{ text }}</h1>
     <hr class="line"/>
-    <p class="text">{{ text }}</p>
+    <p class="title">{{ name }}</p>
   </main>
 </template>
 
@@ -26,14 +26,13 @@ defineProps({
 .quote:hover {
   background-color: #547296;
 }
-/* .title {
-  color: #9fd3c7;
-} */
+
 .title, .text {
   color: #ececec;
 }
 
 .line {
+  border: solid;
   border-color: #9fd3c7;
 }
 </style>

@@ -1,27 +1,21 @@
 <script setup>
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import Quote from './components/Quote.vue'
+import axios from 'axios';
 
-// const quotes = ref([])
-const quotes = [{
-  name: "test 1",
-  text: "quote text 1"
-}, {
-  name: "test 2",
-  text: "quote text 2"
-}]
+const quotes = ref([])
 
-// onMounted(() => {
-//   axios.get('api/getQuotes')
-//     .then(res => {
-//       console.log('hope there are quotes below')
-//       console.log(res.data)
-//       quotes.value = res.data
-//     })
-//     .catch(err => {
-//       console.error('Error getting quotes: ', err)
-//     })
-// })
+onMounted(() => {
+  axios.get('api/getQuotes')
+    .then(res => {
+      console.log('hope there are quotes below')
+      console.log(res.data)
+      quotes.value = res.data
+    })
+    .catch(err => {
+      console.error('Error getting quotes: ', err)
+    })
+})
 </script>
 
 
