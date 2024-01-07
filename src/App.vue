@@ -4,6 +4,7 @@ import Quote from './components/Quote.vue'
 import axios from 'axios';
 
 const quotes = ref([])
+const loading = ref(true)
 
 onMounted(() => {
   axios.get('api/getQuotes')
@@ -15,14 +16,20 @@ onMounted(() => {
     .catch(err => {
       console.error('Error getting quotes: ', err)
     })
+    .finally(() => (loading.value = false))
 })
 </script>
 
 
 <template>
-    <h1 class="title">Top 10 Famous Quotes</h1>
-    <div class="quotes" v-for="quote in quotes">
-      <Quote :name="quote.name" :text="quote.text" />
+    <h1 class="title">Top 5 Famous Quotes</h1>
+    <div v-if="loading">
+      <Quote :name="''" :text="'Loading...'" />
+    </div>
+    <div v-else>
+      <div class="quotes" v-for="quote in quotes">
+        <Quote :name="quote.name" :text="quote.text" />
+      </div>
     </div>
 </template>
 
@@ -30,5 +37,6 @@ onMounted(() => {
 
 .title {
   color: #ececec;
+  max-width: 800px;
 }
 </style>
