@@ -3,14 +3,13 @@ defineProps({
   name: String,
   text: String,
 })
-
 </script>
 
 <template>
   <main class="quote">
     <h1 class="text">{{ text }}</h1>
     <hr class="line"/>
-    <p class="title">{{ name }}</p>
+    <p class="name">{{ name }}</p>
   </main>
 </template>
 
@@ -21,13 +20,12 @@ defineProps({
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   margin: 16px;
-
 }
 .quote:hover {
   background-color: #547296;
 }
 
-.title, .text {
+.name, .text {
   color: #ececec;
 }
 

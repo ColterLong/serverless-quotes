@@ -1,7 +1,8 @@
-import json
+import json, logging, pyodbc
 import azure.functions as func
-import logging
 
+
+connection_string = ""
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 quotes = [{
@@ -15,5 +16,19 @@ quotes = [{
 @app.route(route="getQuotes")
 def getQuotes(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
-    return func.HttpResponse(json.dumps(quotes))
+
+    with pyodbc.connect(connection_string) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM [dbo].[Quotes]")
+    
+        quotes = cursor.fetchall()
+        logging.info(quotes)
+        quotesArr = []
+        for quote in quotes:
+          quotesArr.append({
+            "name": quote.name,
+            "text": quote.text
+          })
+        logging.info(quotesArr)
+    return func.HttpResponse(json.dumps(quotesArr))
    
