@@ -1,8 +1,8 @@
-import json, logging, pyodbc
+import json, logging, pyodbc, os
 import azure.functions as func
 
 
-connection_string = ""
+connection_string: str = os.environ["DATABASE_CONNECTION_STRING"]
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 quotes = [{
