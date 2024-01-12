@@ -9,8 +9,8 @@ const loading = ref(true)
 onMounted(() => {
   axios.get('api/getQuotes')
     .then(res => {
-      console.log('hope there are quotes below')
-      console.log(res.data)
+      // console.log('hope there are quotes below')
+      // console.log(res.data)
       quotes.value = res.data
     })
     .catch(err => {
